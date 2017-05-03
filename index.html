@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html ng-app="gitApp">
+	<head>
+		<title>Todo</title>
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+
+		<!-- Angular Material Library -->
+		<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+		<script type="text/javascript" src="main.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body ng-controller="gitCtrl">
+		<div id="frontpage">
+			<div >
+				<div id="titlebar">
+					<h2>{{title}}</h2>
+					<div>
+						<form ng-submit= "search(username)">
+							<input type="text" id="user" required name="search" placeholder="Search an user" ng-model="username">
+							<input type="submit" id="search" value="Search" >
+						</form>
+					</div>
+				</div>		
+
+				<div id="homepage" ng-if="showhome">
+					<div id="contentdiv">
+						<div id="content">
+							You can search people here. Let's start searching!!
+						</div>
+					</div>
+					<div id="imagediv">
+						<img id="searchimg" src="search.png">
+					</div>
+				</div>
+			</div>
+			<div id="userinfo" ng-if="userid">
+				<div id="info">
+					<div id="infoleft">
+						<div id="userimg">
+							<img id="image" ng-src="{{user.avatar_url}}">
+						</div>
+						<h3 id="nameuser">{{user.name}}</h3>
+					</div>
+					<div id="inforight">
+						<h4 id="userinfotop">Join on: <span>{{user.created_at | date}}</span> </h4>
+						<h4 id="userinfotop">Followers: <span>{{user.followers}}</span> </h4>
+						<h4 id="userinfotop">Following: <span>{{user.following}}</span> </h4>
+						<h4 id="userinfotop">Public repository: <span>{{user.public_repos}}</span> </h4>
+						<h4 id="userinfotop">URL : <span><a href="{{user.html_url}}">{{user.html_url}}</a></span></h4>
+					</div>					
+					
+					<p>{{error}}</p>
+				</div>
+				<div id="userdetails">
+					<table>
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Stars</th>
+								<th>Language</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="repo in repos">
+								<td>{{repo.name}}</td>
+								<td>{{repo.stargazers_count | number}}</td>
+								<td>{{repo.language}}</td>						
+							</tr>
+						</tbody>
+					</table>
+					<table>
+						<thead>
+							<th>Followers</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat = "flwr in followers">
+								<td >{{flwr.login}}</td>
+							</tr>
+						</tbody>				
+					</table>	
+				</div>
+			
+				
+				<!-- <table>
+					<thead>
+						<th>Following</th>
+					</thead>
+					<tbody>
+						<tr ng-repeat = "flwing in following">
+							<td >{{flwing.login}}</td>
+						</tr>
+					</tbody>
+				</table>	 -->		
+			</div>		
+		</div>
+		
+	</body>
+</html>
