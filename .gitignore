@@ -1,0 +1,10 @@
+# Dependency directory
+node_modules/
+bower_components/
+
+# other
+.tmp
+npm-debug.log
+
+#files
+/index.html
