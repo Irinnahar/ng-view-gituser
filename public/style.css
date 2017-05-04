@@ -105,10 +105,10 @@ div#infoleft {
     margin-top: 4%;
     display: inline-block;
     float: right;
-    text-align: left;
-    max-width: 25%;
+    max-width: 300px;
     width: 100%;
-    margin-left: 20%;
+    text-align: left;
+    margin-left: 5%;
 }
 #image {
     width: 150px;
