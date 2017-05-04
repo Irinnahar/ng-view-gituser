@@ -17,7 +17,8 @@
 	</head>
 	<body ng-controller="gitCtrl">
 		<div id="frontpage">
-			<div >
+			<div>
+			<!-- page title & search bar for gituser -->
 				<div id="titlebar">
 					<h2>{{title}}</h2>
 					<div>
@@ -27,7 +28,7 @@
 						</form>
 					</div>
 				</div>		
-
+				<!-- initial page desin -->
 				<div id="homepage" ng-if="showhome">
 					<div id="contentdiv">
 						<div id="content">
@@ -41,12 +42,14 @@
 			</div>
 			<div id="userinfo" ng-if="userid">
 				<div id="info">
+				<!-- user image & name on left side -->
 					<div id="infoleft">
 						<div id="userimg">
 							<img id="image" ng-src="{{user.avatar_url}}">
 						</div>
 						<h3 id="nameuser">{{user.name}}</h3>
 					</div>
+					<!-- gituser info on right side -->
 					<div id="inforight">
 						<h4 id="userinfotop">Join on: <span>{{user.created_at | date}}</span> </h4>
 						<h4 id="userinfotop">Followers: <span>{{user.followers}}</span> </h4>
@@ -58,6 +61,7 @@
 					<p>{{error}}</p>
 				</div>
 				<div id="userdetails">
+				<!-- follower list showing in table -->
 					<table>
 						<thead>
 							<tr>
@@ -74,6 +78,7 @@
 							</tr>
 						</tbody>
 					</table>
+				<!-- Followers list showing in table -->
 					<table>
 						<thead>
 							<th>Followers</th>
@@ -83,20 +88,19 @@
 								<td >{{flwr.login}}</td>
 							</tr>
 						</tbody>				
-					</table>	
-				</div>
-			
-				
-				<!-- <table>
-					<thead>
-						<th>Following</th>
-					</thead>
-					<tbody>
-						<tr ng-repeat = "flwing in following">
-							<td >{{flwing.login}}</td>
-						</tr>
-					</tbody>
-				</table>	 -->		
+					</table>
+				<!-- Following list showing in table -->
+					<table>
+						<thead>
+							<th>Following</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat = "flwing in following">
+								<td >{{flwing.login}}</td>
+							</tr>
+						</tbody>
+					</table>		
+				</div>		
 			</div>		
 		</div>
 		
