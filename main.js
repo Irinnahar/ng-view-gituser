@@ -14,19 +14,13 @@ app.controller('gitCtrl', function todoCtrl($scope, $http) {
 
 		$http.get('https://api.github.com/users/'+ $scope.user.login +'/following')
 			.then($scope.onFollowing, $scope.onError)
-
-			// $scope.url = 'https://api.github.com/users/'+ $scope.user.login +'/following';
-			// console.log($scope.url);
-			// // $scope.url = $scope.user.following_url;
-			// // var hello = $scope.url.split('following');
-			//  //console.log(hello[1]);
 	}
 	
 	$scope.onFollow = function(request){
 		$scope.userid = true;
 		$scope.showhome = false;
 		$scope.followers = request.data;
-		//console.log(request.data)
+		console.log(request.data)
 	}
 
 	$scope.onFollowing = function(request){		
