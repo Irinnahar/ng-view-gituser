@@ -130,6 +130,7 @@ div#infoleft {
     overflow: auto;
     max-height: 400px;
     height: 100%;
+    width: 100%;
 }
 span {
     font-size: 13px;
@@ -139,4 +140,45 @@ span {
     margin: 10px;
     font-size: 14px;
     color: #586069;
+}
+#shortList {
+    width: 50%;
+    text-align: right;
+    display: inline-block;
+    float: right;
+    padding: 20px;
+}
+p#short {
+    display: inline-block;
+    font-size: 14px;
+    padding: 0 5px;
+    font-weight: bold;
+    color: gray;
+}
+select {
+    background: rgba(76,175,80,.1);
+    width: 150px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 13px;
+}
+select:focus {
+    outline: 0;
+}
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill{
+    background: rgba(76,175,80,.1)!important;
+}
+.loader{
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid green;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    margin: 20px auto;
+}
+@keyframes spin{
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
 }

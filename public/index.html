@@ -6,9 +6,18 @@
 		<link rel="stylesheet" type="text/css" href="lib/font-awesome.min.css">
 		<script src="lib/angular.min.js"></script>
 		<script type="text/javascript" src="main.js"></script>
+		<script type="text/javascript" src="github.js"></script>
 		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
-	<body ng-controller="gitCtrl">
+	<body ng-controller="gitCtrl" ng-cloak>
+	<!-- <div ng-if="loading"> -->
+	<div>
+		Loading
+		<div class="loader"></div>
+	</div>
+		
+	<!-- </div> -->
+		
 		<div id="frontpage">
 			<div>
 			<!-- page title & search bar for gituser -->
@@ -53,6 +62,16 @@
 					
 					<p>{{error}}</p>
 				</div>
+				<div>
+					<div id="shortList">
+						<p id="short">Sort By</p>
+						<select ng-model="repoSort">
+							<option value="name">Name</option>
+							<option value="-stargazers_count">Stars</option>
+							<option value="language">Language</option>
+						</select>
+					</div>
+				</div>
 				<div id="userdetails">
 				<!-- follower list showing in table -->
 					<table>
@@ -64,7 +83,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="repo in repos">
+							<tr ng-repeat="repo in repos | orderBy : repoSort">
 								<td>{{repo.name}}</td>
 								<td>{{repo.stargazers_count | number}}</td>
 								<td>{{repo.language}}</td>						

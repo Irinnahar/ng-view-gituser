@@ -1,10 +1,12 @@
 var app = angular.module('gitApp', []);
 app.controller('gitCtrl', function todoCtrl($scope, $http) {
 	$scope.title= 'User Search on github!!'
-
+	$scope.repoSort = '-stargazers_count';
 	$scope.userid = false;
 	$scope.showhome=true;
+
 	$scope.onUserComplete = function(request, username){
+		// $scope.loading = false;
 		$scope.user = request.data;
 		$http.get($scope.user.repos_url)
 			.then($scope.onRepos , $scope.onError)
@@ -37,10 +39,15 @@ app.controller('gitCtrl', function todoCtrl($scope, $http) {
 	$scope.onError = function(response){
 		$scope.error = "User not found!!";
 	}
+
+	// $scope.loading = false;
 	$scope.search = function(username){
+		// $scope.loading = true;
 		$http.get("https://api.github.com/users/" + username)
 			.then($scope.onUserComplete , $scope.onError)
 		$scope.username = "";
+		
+
 	}
 
 })
