@@ -1,12 +1,16 @@
 var app = angular.module('gitApp', []);
-app.controller('gitCtrl', function todoCtrl($scope, $http) {
+app.controller('gitCtrl', function todoCtrl($scope, $http, $timeout) {
 	$scope.title= 'User Search on github!!'
 	$scope.repoSort = '-stargazers_count';
 	$scope.userid = false;
 	$scope.showhome=true;
+	$scope.showloading = true;
 
+	$timeout(function () {
+	    $scope.showloading = false;
+	}, 3000);
 	$scope.onUserComplete = function(request, username){
-		// $scope.loading = false;
+		$scope.showloading = false;
 		$scope.user = request.data;
 		$http.get($scope.user.repos_url)
 			.then($scope.onRepos , $scope.onError)
@@ -42,7 +46,7 @@ app.controller('gitCtrl', function todoCtrl($scope, $http) {
 
 	// $scope.loading = false;
 	$scope.search = function(username){
-		// $scope.loading = true;
+		 $scope.showloading = true;
 		$http.get("https://api.github.com/users/" + username)
 			.then($scope.onUserComplete , $scope.onError)
 		$scope.username = "";
