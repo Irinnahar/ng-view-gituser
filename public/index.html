@@ -22,7 +22,7 @@
 		
 		<div id="frontpage">
 			<div>
-			<!-- page title & search bar for gituser -->
+				<!-- page title & search bar for gituser -->
 				<div id="titlebar">
 					<h2>{{title}}</h2>
 					<div>
@@ -40,7 +40,23 @@
 						</div>
 					</div>
 					<div id="imagediv">
-						<img id="searchimg" src="search.png">
+						<img id="searchimg" src="search.png" ng-hide="users.length">
+						<div class="search-result-container" layout="column" ng-show="users.length">
+							<md-card md-theme="dark-purple" ng-repeat="user in users">
+								<md-card-title>
+									<md-card-title-media>
+										<img class="md-media-sm card-media" ng-src="{{ user.avatar_url }}&s=80">
+									</md-card-title-media>
+									<md-card-title-text>
+										<span class="md-headline">{{ user.login }}</span>
+										<span class="md-subhead">
+											<a href="javascript:void;" ng-click="showProfile(user.login)">View Profile</a> |
+											<a target="_blank" href="{{ user.html_url }}">View on Github</a>
+										</span>
+									</md-card-title-text>
+								</md-card-title>
+							</md-card>
+						</div>
 					</div>
 				</div>
 			</div>
