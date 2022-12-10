@@ -4,7 +4,7 @@
   "description": "demo project",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.15.2"
+    "express": "^4.17.3"
   },
   "devDependencies": {},
   "scripts": {
